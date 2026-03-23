@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryHub — 採用広報を、企業の語りの起点にする。</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --sh-black: #0f2027;
+    --sh-dark: #0f4c5c;
+    --sh-accent: #144552;
+    --sh-blue: #0d9488;
+    --sh-light: #f8f9fa;
+    --sh-gray: #6c757d;
+    --sh-red: #e63946;
+    --sh-green: #059669;
+  }
+
+  .reveal {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 24px;
+    color: var(--sh-black);
+  }
+
+  .reveal .slides {
+    text-align: left;
+  }
+
+  .reveal .slides section {
+    padding: 40px 60px;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .reveal h1 {
+    font-size: 2.4em;
+    font-weight: 900;
+    line-height: 1.3;
+    color: var(--sh-black);
+    margin-bottom: 0.3em;
+  }
+
+  .reveal h2 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--sh-black);
+    margin-bottom: 0.5em;
+    border-bottom: 3px solid var(--sh-blue);
+    padding-bottom: 0.2em;
+    display: inline-block;
+  }
+
+  .reveal h3 {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--sh-accent);
+    margin-bottom: 0.4em;
+  }
+
+  .reveal p, .reveal li {
+    font-size: 0.85em;
+    line-height: 1.7;
+    color: #333;
+  }
+
+  .reveal ul { list-style: none; padding-left: 0; }
+  .reveal ul li::before {
+    content: "\2014";
+    color: var(--sh-blue);
+    font-weight: 700;
+    margin-right: 0.5em;
+  }
+
+  .reveal table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75em;
+    margin-top: 0.8em;
+  }
+
+  .reveal table th {
+    background: var(--sh-dark);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .reveal table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .reveal table tr:nth-child(even) td {
+    background: #f5f7fa;
+  }
+
+  /* Title slide */
+  .slide-title {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(135deg, var(--sh-black) 0%, var(--sh-dark) 50%, var(--sh-accent) 100%);
+    color: white !important;
+  }
+  .slide-title h1 { color: white; font-size: 2.6em; }
+  .slide-title .subtitle {
+    font-size: 1.2em;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    margin-top: 0.3em;
+  }
+  .slide-title .company {
+    font-size: 0.7em;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2em;
+  }
+
+  /* Section divider */
+  .slide-divider {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--sh-blue);
+    color: white !important;
+  }
+  .slide-divider h2 {
+    color: white;
+    border-bottom-color: rgba(255,255,255,0.4);
+    font-size: 2em;
+  }
+  .slide-divider p { color: rgba(255,255,255,0.85); font-size: 1em; }
+
+  /* Stat callout */
+  .stat-big {
+    font-size: 3.5em;
+    font-weight: 900;
+    color: var(--sh-blue);
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-size: 0.9em;
+    color: var(--sh-gray);
+    margin-top: 0.2em;
+  }
+
+  /* Grid layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 1em;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 1em;
+  }
+
+  /* Card */
+  .card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .card.accent {
+    border-left: 4px solid var(--sh-blue);
+  }
+  .card.dark {
+    background: var(--sh-dark);
+    color: white;
+    border: none;
+  }
+  .card.dark h3, .card.dark p, .card.dark li { color: white; }
+  .card.dark li::before { color: rgba(255,255,255,0.5); }
+
+  .card h3 { margin-top: 0; }
+  .card .num {
+    font-size: 2.2em;
+    font-weight: 900;
+    color: var(--sh-blue);
+    line-height: 1;
+    margin-bottom: 0.2em;
+  }
+
+  /* Problem cards */
+  .problem-card {
+    background: #fff5f5;
+    border-left: 4px solid var(--sh-red);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .problem-card h3 { color: var(--sh-red); }
+
+  /* Solution cards */
+  .solution-card {
+    background: #ecfdf5;
+    border-left: 4px solid var(--sh-green);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .solution-card h3 { color: var(--sh-green); }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 1em;
+    flex-wrap: wrap;
+  }
+  .flow-step {
+    background: var(--sh-blue);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: 500;
+    text-align: center;
+    min-width: 120px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--sh-gray);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    background: var(--sh-blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.65em;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }
+
+  /* Comparison highlight */
+  .highlight-row td:first-child {
+    font-weight: 700;
+    color: var(--sh-blue);
+  }
+
+  /* CTA slide */
+  .slide-cta {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--sh-accent) 0%, var(--sh-blue) 100%);
+    color: white !important;
+    text-align: center !important;
+  }
+  .slide-cta h1 { color: white; text-align: center; }
+  .slide-cta p { color: rgba(255,255,255,0.85); text-align: center; font-size: 1em; }
+  .slide-cta .email {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: white;
+    margin-top: 1em;
+  }
+
+  /* Confidential footer */
+  .reveal .slides section::after {
+    content: "Confidential \2014 StoryHub Inc.";
+    position: absolute;
+    bottom: 16px;
+    right: 60px;
+    font-size: 0.5em;
+    color: #ccc;
+  }
+  .slide-title::after, .slide-divider::after, .slide-cta::after {
+    color: rgba(255,255,255,0.3) !important;
+  }
+
+  /* Diagram box */
+  .diagram-box {
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 1em;
+    font-size: 0.8em;
+    line-height: 1.8;
+  }
+
+  .reveal .fragment.grow {
+    transition: all 0.3s ease;
+  }
+
+  /* Override for circle marker */
+  .circle-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--sh-blue);
+    color: white;
+    font-weight: 700;
+    font-size: 0.75em;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  .tag {
+    display: inline-block;
+    background: #e0f2f1;
+    color: var(--sh-blue);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<section class="slide-title">
+  <div class="badge">Confidential | 2026</div>
+  <h1>採用広報を、<br>企業の語りの起点にする。</h1>
+  <div class="subtitle">候補者の声から始める。毎月届け続ける。採用ブランドを資産にする。</div>
+  <div class="company">StoryHub株式会社 | エンプロイヤーブランディングプラン v1</div>
+</section>
+
+<!-- ==================== SLIDE 2: MARKET CONTEXT ==================== -->
+<section>
+  <h2>採用広報を取り巻く環境の変化</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="num">1,710億円</div>
+      <h3>HRテック市場規模</h3>
+      <p>2025年の日本のHRテック市場規模。年平均6.87%で成長を続けている</p>
+      <p class="stat-label">IMARC Group調査</p>
+    </div>
+    <div class="card">
+      <div class="num">640万人</div>
+      <h3>2030年の労働力不足</h3>
+      <p>構造的な人材難。超売り手市場の定着で「条件提示」だけでは人が採れない時代に</p>
+      <p class="stat-label">パーソル総合研究所・中央大学</p>
+    </div>
+    <div class="card">
+      <div class="num">5%</div>
+      <h3>AIで成果を出せている企業</h3>
+      <p>AIを導入しても成果を出せているのは全体のわずか5%。戦略とワークフローが伴わなければ成果に結びつかない</p>
+      <p class="stat-label">BCG, 2025年9月</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 3: EVALUATION SHIFT ==================== -->
+<section>
+  <h2>評価軸の変化</h2>
+  <div class="grid-2" style="margin-top: 1.5em;">
+    <div>
+      <h3 style="color: var(--sh-gray); font-size: 1.3em;">これまで</h3>
+      <p style="font-size: 1.4em; font-weight: 700; color: var(--sh-gray);">「出していること」に価値があった</p>
+      <ul>
+        <li>社員インタビューを掲載する</li>
+        <li>採用サイトを整える</li>
+        <li>媒体に求人を出す</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color: var(--sh-blue); font-size: 1.3em;">これから</h3>
+      <p style="font-size: 1.4em; font-weight: 700; color: var(--sh-blue);">「何が伝わっているか」が問われる</p>
+      <ul>
+        <li>候補者の行動を変えたか</li>
+        <li>企業のカルチャーが伝わったか</li>
+        <li>応募の決め手になったか</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top: 1.5em; font-size: 0.85em; color: var(--sh-gray);">年間120万〜360万円の制作投資が「読まれない・響かない」コンテンツに消えている現状</p>
+</section>
+
+<!-- ==================== SLIDE 4: DIVIDER - PROBLEMS ==================== -->
+<section class="slide-divider">
+  <h2>3つの構造的課題</h2>
+  <p>採用広報のプロセスそのものに内在する問題</p>
+</section>
+
+<!-- ==================== SLIDE 5: 3 PROBLEMS ==================== -->
+<section>
+  <h2>多くの企業が抱える構造的課題</h2>
+  <div class="grid-3">
+    <div class="problem-card">
+      <h3>課題 1</h3>
+      <p style="font-size: 1.1em; font-weight: 700;">対話の不在</p>
+      <p>候補者に伝わっているかわからない。「何が応募の決め手か」「何が不安で辞退したか」を知る手段がない</p>
+    </div>
+    <div class="problem-card">
+      <h3>課題 2</h3>
+      <p style="font-size: 1.1em; font-weight: 700;">資産の断絶</p>
+      <p>コンテンツが使い捨て。担当者異動・媒体変更で前年の資産を継承できない。1本10〜30万円の記事が単発で消費</p>
+    </div>
+    <div class="problem-card">
+      <h3>課題 3</h3>
+      <p style="font-size: 1.1em; font-weight: 700;">投資の死蔵</p>
+      <p>社員の声、カルチャー、成長環境…豊富な素材が採用サイトの中で眠る。IR・PR・SNSに展開されない</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 6: DIVIDER - APPROACH ==================== -->
+<section class="slide-divider">
+  <h2>StoryHubのアプローチ</h2>
+  <p>採用広報を採用時期だけの「施策」から<br>候補者との「365日の対話チャネル」に変える</p>
+</section>
+
+<!-- ==================== SLIDE 7: CONCEPT ==================== -->
+<section>
+  <h2>キャンペーン型から対話チャネル型へ</h2>
+  <div class="grid-2" style="margin-top: 1em;">
+    <div class="card" style="border-left: 4px solid var(--sh-gray);">
+      <h3 style="color: var(--sh-gray);">従来型（キャンペーン型）</h3>
+      <p>採用時期に合わせてコンテンツを作り → 媒体に掲載 → 採用期が終われば発信も止まる</p>
+      <ul>
+        <li>候補者との接点が採用時期だけ</li>
+        <li>候補者の反応を次に反映できない</li>
+        <li>制作期間中、人事が採用実務に手が回らない</li>
+      </ul>
+    </div>
+    <div class="card accent">
+      <h3 style="color: var(--sh-blue);">StoryHub型（対話チャネル型）</h3>
+      <p>候補者の声を起点に月次でカルチャー発信 → 反応を測定 → 刺さったコンテンツを採用キャンペーンに集約</p>
+      <ul>
+        <li>候補者の関心にリアルタイムで対応</li>
+        <li>検証済みコンテンツでキャンペーンを構成</li>
+        <li>人事の通年稼働が平準化</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 8: 4 PILLARS OVERVIEW ==================== -->
+<section>
+  <h2>4つの柱</h2>
+  <div class="diagram-box" style="text-align: center; font-size: 0.85em;">
+    <div style="background: var(--sh-dark); color: white; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+      <strong>StoryHubプラットフォーム</strong>　—　インタビュー / スタジオ / フィード / ブランドメモリー
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; align-items: center;">
+      <div style="background: var(--sh-blue); color: white; padding: 16px; border-radius: 8px;">
+        <strong>柱 1</strong><br>キャンディデイト<br>アセスメント<br><span style="font-size: 0.8em; opacity: 0.8;">候補者の声から始める</span>
+      </div>
+      <div style="font-size: 1.5em; color: var(--sh-gray);">&rarr;</div>
+      <div style="background: var(--sh-blue); color: white; padding: 16px; border-radius: 8px;">
+        <strong>柱 2</strong><br>月次エンプロイヤー<br>ストーリー<br><span style="font-size: 0.8em; opacity: 0.8;">月次で発信・検証</span>
+      </div>
+      <div style="font-size: 1.5em; color: var(--sh-gray);">&rarr;</div>
+      <div style="background: var(--sh-blue); color: white; padding: 16px; border-radius: 8px;">
+        <strong>柱 3</strong><br>リクルーティング<br>キャンペーンHub<br><span style="font-size: 0.8em; opacity: 0.8;">採用期に集約</span>
+      </div>
+    </div>
+    <div style="margin-top: 12px; color: var(--sh-gray);">
+      候補者の声を聞く &rarr; コンテンツを作る &rarr; 反応を見る &rarr; 採用キャンペーンに集約 &rarr; 効果を測定 &rarr; 次期に改善
+    </div>
+  </div>
+  <table style="margin-top: 1em;">
+    <tr><th>構造的課題</th><th>StoryHubのアプローチ</th></tr>
+    <tr><td>対話の不在</td><td>AIオートインタビューで候補者・退職者の声を起点に設計</td></tr>
+    <tr><td>資産の断絶</td><td>ブランドメモリーで採用ナラティブ資産を自動継承</td></tr>
+    <tr><td>投資の死蔵</td><td>1ソースマルチユースで全チャネルに展開</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 9: COMPLEMENTARY POSITIONING ==================== -->
+<section>
+  <h2>既存プレイヤーとの補完関係</h2>
+  <p>StoryHubは「ナラティブテック」というポジションで、既存の採用体制に新しい価値を加えます。</p>
+  <table>
+    <tr><th>領域</th><th>StoryHub</th><th>既存プレイヤー</th></tr>
+    <tr><td>キャンディデイトアセスメント（候補者リサーチ）</td><td><strong style="color: var(--sh-blue);">● 主担当</strong></td><td style="color: #ccc;">対象外</td></tr>
+    <tr><td>ナラティブ設計・コンテンツ戦略</td><td><strong style="color: var(--sh-blue);">● 主担当</strong></td><td>一部対応（HeaR等）</td></tr>
+    <tr><td>月次カルチャーコンテンツ制作</td><td><strong style="color: var(--sh-blue);">● 主担当</strong></td><td>制作代行（エージェンシー）</td></tr>
+    <tr><td>AI編集・多言語展開</td><td><strong style="color: var(--sh-blue);">● 主担当</strong></td><td>一部対応（talentbook）</td></tr>
+    <tr><td>採用プラットフォーム</td><td>連携</td><td><strong>● 主担当</strong>（Wantedly等）</td></tr>
+    <tr><td>採用管理（ATS）</td><td>連携</td><td><strong>● 主担当</strong>（HERP等）</td></tr>
+    <tr><td>採用CXコンサルティング</td><td>連携</td><td><strong>● 主担当</strong>（HeaR等）</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 10: DIVIDER - PILLAR 1 ==================== -->
+<section class="slide-divider">
+  <span class="badge" style="background: rgba(255,255,255,0.2);">柱 1</span>
+  <h2>キャンディデイトアセスメント</h2>
+  <p>候補者の声から始める</p>
+</section>
+
+<!-- ==================== SLIDE 11: CANDIDATE ASSESSMENT DETAIL ==================== -->
+<section>
+  <h2>AIオートインタビューで候補者の声を可視化</h2>
+  <p>採用広報の設計を「社内の思い込み」からではなく「候補者の声」から始める。<br>これがStoryHubのアプローチの最大の独自性です。</p>
+  <div class="flow" style="justify-content: center;">
+    <div class="flow-step">対象者選定<br><span style="font-size: 0.8em;">退職者・辞退者<br>入社者 10〜30名</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">AIオート<br>インタビュー<br><span style="font-size: 0.8em;">自動実施</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">定性&times;定量<br>分析<br><span style="font-size: 0.8em;">認知ギャップ特定</span></div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">設計指針<br>策定<br><span style="font-size: 0.8em;">ナラティブブリーフ</span></div>
+  </div>
+  <div class="grid-2" style="margin-top: 1.5em;">
+    <div class="card accent">
+      <h3>なぜAIインタビューなのか</h3>
+      <p>退職者・内定辞退者に「なぜ辞めたか」「なぜ辞退したか」を人事が対面で聞いても本音は出にくい。利害関係のないAIが聞くことで、率直なフィードバックが得られる。</p>
+    </div>
+    <div class="card accent">
+      <h3>アセスメント対象セグメント</h3>
+      <table style="margin-top: 0.5em; font-size: 0.85em;">
+        <tr><td style="font-weight: 700;">退職者</td><td>退職の本当の理由</td></tr>
+        <tr><td style="font-weight: 700;">内定辞退者</td><td>辞退の本当の理由・比較先企業</td></tr>
+        <tr><td style="font-weight: 700;">入社者</td><td>入社前後のギャップ・推奨度</td></tr>
+        <tr><td style="font-weight: 700;">選考中候補者</td><td>応募動機・不安・知りたかった情報</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 12: ASSESSMENT TO CONTENT ==================== -->
+<section>
+  <h2>アセスメントからコンテンツへの変換</h2>
+  <p>アセスメント結果がコンテンツ戦略に直結します。</p>
+  <div class="diagram-box" style="text-align: center; padding: 30px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+      <div style="background: var(--sh-blue); color: white; padding: 14px 20px; border-radius: 8px;">
+        <strong>知りたいこと</strong><br>Top 10 を特定
+      </div>
+      <div style="font-size: 1.5em; color: var(--sh-gray);">&rarr;</div>
+      <div style="background: var(--sh-accent); color: white; padding: 14px 20px; border-radius: 8px;">
+        コンテンツ<br>カレンダーに反映
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+      <div style="background: var(--sh-blue); color: white; padding: 14px 20px; border-radius: 8px;">
+        <strong>不安・懸念</strong><br>Top 5 を特定
+      </div>
+      <div style="font-size: 1.5em; color: var(--sh-gray);">&rarr;</div>
+      <div style="background: var(--sh-accent); color: white; padding: 14px 20px; border-radius: 8px;">
+        FAQ / カルチャー<br>ストーリーで解消
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+      <div style="background: var(--sh-blue); color: white; padding: 14px 20px; border-radius: 8px;">
+        <strong>入社の決め手</strong><br>Top 3 を特定
+      </div>
+      <div style="font-size: 1.5em; color: var(--sh-gray);">&rarr;</div>
+      <div style="background: var(--sh-accent); color: white; padding: 14px 20px; border-radius: 8px;">
+        採用メッセージの<br>軸に据える
+      </div>
+    </div>
+    <div style="margin-top: 16px; font-size: 1.2em; color: var(--sh-blue);">
+      &#8635; 施策実行後に再アセスメント → 改善サイクルへ
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 13: DIVIDER - PILLAR 2 ==================== -->
+<section class="slide-divider">
+  <span class="badge" style="background: rgba(255,255,255,0.2);">柱 2</span>
+  <h2>月次エンプロイヤーストーリー</h2>
+  <p>採用広報のアンバンドル</p>
+</section>
+
+<!-- ==================== SLIDE 14: MONTHLY EB CONCEPT ==================== -->
+<section>
+  <h2>月次で発信し、反応を見て、採用期に集約する</h2>
+  <p>採用広報の構成要素を「アンバンドル」し、月次でカルチャーコンテンツとして発信。<br>候補者の反応を見ながら、実際に刺さったコンテンツを採用キャンペーンの中核に据えます。</p>
+  <table>
+    <tr><th>月</th><th>テーマ例</th><th>コンテンツ形式</th></tr>
+    <tr><td>4月</td><td>新入社員のオンボーディング記録</td><td>社員インタビュー</td></tr>
+    <tr><td>5月</td><td>エンジニア組織のカルチャー</td><td>チーム紹介記事</td></tr>
+    <tr><td>6月</td><td>プロジェクトの舞台裏</td><td>プロジェクトストーリー</td></tr>
+    <tr><td>7月</td><td>働き方・制度紹介</td><td>制度解説 + 社員の声</td></tr>
+    <tr><td>8月</td><td>経営者の採用への思い</td><td>CEO/CTOインタビュー</td></tr>
+    <tr><td>9月</td><td>入社1年の成長ビフォーアフター</td><td>成長ストーリー</td></tr>
+    <tr><td>10月</td><td>社内勉強会・技術発表</td><td>イベントレポート</td></tr>
+    <tr><td>11月</td><td>多様性・インクルージョン</td><td>社員インタビュー</td></tr>
+    <tr><td>12月</td><td>1年の振り返りと来年の展望</td><td>チームダイジェスト</td></tr>
+    <tr><td style="background: #e0f2f1; font-weight: 700;">1〜3月</td><td style="background: #e0f2f1; font-weight: 700;">採用キャンペーンの構成・集約</td><td style="background: #e0f2f1;">年間コンテンツの再構成・最適化</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 15: 1 SOURCE MULTI USE ==================== -->
+<section>
+  <h2>1ソースマルチユース</h2>
+  <p>1回の社員インタビュー（60分）から生成できるコンテンツ：</p>
+  <table>
+    <tr><th>フォーマット</th><th>用途</th><th>チャネル</th></tr>
+    <tr><td>カルチャーストーリー（3,000字）</td><td>採用広報メインコンテンツ</td><td>採用サイト / オウンドメディア</td></tr>
+    <tr><td>ダイジェスト版（1,000字）</td><td>月次エンプロイヤーストーリー</td><td>note / Wantedly</td></tr>
+    <tr><td>IR向け人的資本記事（1,500字）</td><td>統合報告書素材</td><td>IRサイト</td></tr>
+    <tr><td>SNS投稿 &times; 5本</td><td>認知拡大</td><td>X / LinkedIn</td></tr>
+    <tr><td>スカウト文面素材（500字）</td><td>ダイレクトリクルーティング</td><td>各スカウトツール</td></tr>
+    <tr><td>社内報記事（800字）</td><td>インターナルコミュニケーション</td><td>社内ポータル</td></tr>
+  </table>
+  <div class="grid-3" style="margin-top: 0.8em;">
+    <div class="solution-card" style="text-align: center;">
+      <h3>6種類</h3>
+      <p>1回の取材から<br>生成できるコンテンツ数</p>
+    </div>
+    <div class="solution-card" style="text-align: center;">
+      <h3>1/6</h3>
+      <p>従来比の<br>取材工数</p>
+    </div>
+    <div class="solution-card" style="text-align: center;">
+      <h3>IR &times; 採用</h3>
+      <p>同一素材から<br>横断展開</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 16: DIVIDER - PILLAR 3 ==================== -->
+<section class="slide-divider">
+  <span class="badge" style="background: rgba(255,255,255,0.2);">柱 3</span>
+  <h2>リクルーティングキャンペーンHub</h2>
+  <p>通年蓄積を採用キャンペーンに集約</p>
+</section>
+
+<!-- ==================== SLIDE 17: CAMPAIGN HUB DETAIL ==================== -->
+<section>
+  <h2>通年コンテンツを採用キャンペーンに集約</h2>
+  <p>月次エンプロイヤーストーリーで通年蓄積したコンテンツを、採用強化期にキャンペーンとして集約。<br>「採用時期に慌ててコンテンツを作る」から「1年分の検証済みコンテンツを編集する」へ。</p>
+  <table>
+    <tr><th>集約先</th><th>内容</th></tr>
+    <tr><td>採用サイト更新</td><td>蓄積コンテンツを採用サイトにキュレーション</td></tr>
+    <tr><td>採用ピッチデック</td><td>スカウト送付時の会社説明資料</td></tr>
+    <tr><td>採用イベント・説明会資料</td><td>通年コンテンツから抜粋・再構成</td></tr>
+    <tr><td>Wantedly / 媒体向け素材</td><td>チャネルごとにフォーマット最適化</td></tr>
+    <tr><td>SNS素材</td><td>X / LinkedIn向け画像 + テキスト</td></tr>
+  </table>
+  <div class="grid-2" style="margin-top: 1em;">
+    <div class="card" style="border-left: 4px solid var(--sh-gray);">
+      <h3 style="color: var(--sh-gray);">従来型</h3>
+      <p>採用時期に3ヶ月で慌てて制作</p>
+    </div>
+    <div class="card accent">
+      <h3 style="color: var(--sh-blue);">StoryHub型</h3>
+      <p>月次蓄積 &rarr; 採用期に2週間で集約。半期1回の大リフレッシュ + 随時更新</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 18: DIVIDER - PLATFORM ==================== -->
+<section class="slide-divider">
+  <span class="badge" style="background: rgba(255,255,255,0.2);">柱 4</span>
+  <h2>StoryHubプラットフォーム</h2>
+  <p>全工程を支えるインフラ</p>
+</section>
+
+<!-- ==================== SLIDE 19: PLATFORM PRODUCTS ==================== -->
+<section>
+  <h2>4つのプロダクト</h2>
+  <div class="grid-2">
+    <div class="card dark">
+      <h3>StoryHubインタビュー</h3>
+      <p>AIオートインタビュー</p>
+      <ul>
+        <li>候補者・退職者への自動インタビュー</li>
+        <li>社員・マネージャーの取材・素材収集</li>
+        <li>施策後の候補者フィードバック収集</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>StoryHubスタジオ</h3>
+      <p>AIエディター</p>
+      <ul>
+        <li>インタビューからの記事自動生成</li>
+        <li>レビュー・ファクトチェックの自動化</li>
+        <li>日英翻訳（グローバル採用対応）</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>StoryHubフィード</h3>
+      <p>マルチチャネル配信</p>
+      <ul>
+        <li>採用サイトへの月次コンテンツ配信</li>
+        <li>Wantedly・note等への同時配信</li>
+        <li>X / LinkedIn配信最適化</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <h3>ブランドメモリー</h3>
+      <p>ナラティブ資産管理</p>
+      <ul>
+        <li>採用ブランドガイドラインの一貫性管理</li>
+        <li>社員ストーリー資産の蓄積・再利用</li>
+        <li>担当者が変わっても語りが断絶しない</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 20: DIVIDER - SELF-RUNNING ==================== -->
+<section class="slide-divider">
+  <h2>自走化支援</h2>
+  <p>ツール &times; 伴走で「自分たちで回せる」状態を3ヶ月でつくる</p>
+</section>
+
+<!-- ==================== SLIDE 21: 5 WALLS ==================== -->
+<section>
+  <h2>自走化の5段階の壁と解決策</h2>
+  <p>内製化には5つの壁があります。StoryHubは各壁にプロダクトで解を提供します。</p>
+  <table>
+    <tr><th>段階</th><th>壁</th><th>StoryHubの解決策</th></tr>
+    <tr>
+      <td><span class="circle-marker">1</span></td>
+      <td>何を書けばいいかわからない</td>
+      <td style="color: var(--sh-blue); font-weight: 500;">キャンディデイトアセスメントで候補者の知りたいことを可視化</td>
+    </tr>
+    <tr>
+      <td><span class="circle-marker">2</span></td>
+      <td>誰にインタビューすればいいかわからない</td>
+      <td style="color: var(--sh-blue); font-weight: 500;">ブランドメモリーのナラティブマップで「語るべき人 &times; テーマ」を設計</td>
+    </tr>
+    <tr>
+      <td><span class="circle-marker">3</span></td>
+      <td>インタビューがうまくできない</td>
+      <td style="color: var(--sh-blue); font-weight: 500;">AIオートインタビューで半構造化インタビューを自動化</td>
+    </tr>
+    <tr>
+      <td><span class="circle-marker">4</span></td>
+      <td>書いたけど質が低い</td>
+      <td style="color: var(--sh-blue); font-weight: 500;">StoryHubスタジオのAI編集・ファクトチェックで品質底上げ</td>
+    </tr>
+    <tr>
+      <td><span class="circle-marker">5</span></td>
+      <td>出したけど効果がわからない</td>
+      <td style="color: var(--sh-blue); font-weight: 500;">StoryHubフィードのアナリティクスで応募貢献度を可視化</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 22: SELF-RUNNING TIMELINE ==================== -->
+<section>
+  <h2>自走化タイムライン</h2>
+  <p>StoryHubの支援は「制作代行」ではありません。3ヶ月で人事チームが自走できる状態をつくります。</p>
+  <div style="margin-top: 1.5em;">
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">0</div>
+      <div>
+        <h3 style="margin: 0;">Phase 0: キャンディデイトアセスメント（1ヶ月）</h3>
+        <p style="margin: 4px 0 0;">StoryHub主導。候補者10〜30名へのAIインタビュー。候補者インサイトレポートをアウトプット。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">1</div>
+      <div>
+        <h3 style="margin: 0;">Phase 1: ナラティブ設計（1ヶ月）</h3>
+        <p style="margin: 4px 0 0;">StoryHub主導。採用広報のコンテンツカレンダー（6ヶ月分）を策定。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">2</div>
+      <div>
+        <h3 style="margin: 0;">Phase 2: 制作伴走（1-2ヶ月）</h3>
+        <p style="margin: 4px 0 0;">StoryHub伴走。最初の3-5本を一緒に作る。テンプレート・ワークフローを構築。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px;">
+      <div class="circle-marker">3</div>
+      <div>
+        <h3 style="margin: 0;">Phase 3: 自走（継続）</h3>
+        <p style="margin: 4px 0 0;">ツール提供 + 月次レビュー。人事チーム・現場マネージャーが自らインタビュー設計→記事公開まで完結。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 23: IR VS EB - SELF-RUNNING ==================== -->
+<section>
+  <h2>IR版との差異：なぜ採用広報は自走できるのか</h2>
+  <p>採用広報はIR（統合報告書）と異なり、制度準拠の壁がありません。<br>社員が自分の言葉で語ればよい。この「専門性の壁の低さ」が自走化の可能性を広げます。</p>
+  <table>
+    <tr><th>観点</th><th>IR版（統合報告書）</th><th style="color: var(--sh-blue);">採用広報版</th></tr>
+    <tr><td>自走化の難易度</td><td>高い（開示規制、投資家リテラシー）</td><td style="color: var(--sh-green); font-weight: 700;">相対的に低い（社員が語ればよい）</td></tr>
+    <tr><td>伴走の深さ</td><td>通年伴走が前提</td><td style="color: var(--sh-green); font-weight: 700;">立ち上げ3ヶ月 &rarr; ツール自走</td></tr>
+    <tr><td>ツール活用の重心</td><td>Studio中心</td><td style="color: var(--sh-green); font-weight: 700;">Interview + Studio</td></tr>
+    <tr><td>自走化のゴール</td><td>IR部門がStoryHubで月次コンテンツを内製</td><td style="color: var(--sh-green); font-weight: 700;">人事・現場マネージャーが自ら完結</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 24: BEFORE AFTER ==================== -->
+<section>
+  <h2>導入前と導入後で、採用広報はこう変わる</h2>
+  <table>
+    <tr><th>観点</th><th style="color: var(--sh-gray);">Before（従来型）</th><th style="color: var(--sh-blue);">After（StoryHub導入後）</th></tr>
+    <tr><td>発信頻度</td><td>採用時期のみ（年2-3回の集中）</td><td style="color: var(--sh-green); font-weight: 700;">月次の通年カルチャー発信</td></tr>
+    <tr><td>候補者フィードバック</td><td>面接での断片的な感触</td><td style="color: var(--sh-green); font-weight: 700;">AIアセスメントによる認知ギャップの定量把握</td></tr>
+    <tr><td>制作プロセス</td><td>外注 or 人事が兼務で疲弊</td><td style="color: var(--sh-green); font-weight: 700;">AI支援 + テンプレで自走</td></tr>
+    <tr><td>制作費</td><td>1本10〜30万円 &times; 年12本 = 120〜360万円</td><td style="color: var(--sh-green); font-weight: 700;">自走化後はツール利用費のみ</td></tr>
+    <tr><td>社内ナレッジ</td><td>担当者の頭の中。異動でリセット</td><td style="color: var(--sh-green); font-weight: 700;">Brand Memoryに蓄積、引き継ぎ可能</td></tr>
+    <tr><td>コンテンツ活用</td><td>採用サイトに掲載して終わり</td><td style="color: var(--sh-green); font-weight: 700;">1ソースマルチユースでIR・PR・SNSにも展開</td></tr>
+    <tr><td>候補者との関係</td><td>採用時期だけの一方通行</td><td style="color: var(--sh-green); font-weight: 700;">365日の継続的な対話</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 25: COMPETITIVE COMPARISON ==================== -->
+<section>
+  <h2>競合との違い</h2>
+  <table style="font-size: 0.7em;">
+    <tr><th></th><th style="color: var(--sh-blue);">StoryHub</th><th>talentbook</th><th>Wantedly</th><th>note pro</th><th>HeaR</th></tr>
+    <tr><td>キャンディデイトアセスメント</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&triangle;</td></tr>
+    <tr><td>ナラティブ設計</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&triangle;</td><td>&times;</td><td>&times;</td><td>&#9675;</td></tr>
+    <tr><td>月次コンテンツ制作（AI支援）</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td></tr>
+    <tr><td>多言語対応</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&times;</td></tr>
+    <tr><td>採用プラットフォーム</td><td>&times;</td><td style="font-weight: 700;">&#9675;</td><td style="font-weight: 700;">&#9675;</td><td style="font-weight: 700;">&#9675;</td><td>&times;</td></tr>
+    <tr><td>ブランドメモリー（資産継承）</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&times;</td></tr>
+    <tr><td>1ソースマルチユース</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&times;</td></tr>
+    <tr><td>自走化プログラム</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&triangle;</td></tr>
+    <tr><td>IR・PRとの横断展開</td><td style="color: var(--sh-blue); font-weight: 700;">&#9675;</td><td>&times;</td><td>&times;</td><td>&times;</td><td>&times;</td></tr>
+  </table>
+  <div class="grid-3" style="margin-top: 0.8em;">
+    <div class="solution-card">
+      <h3>候補者の声から始める</h3>
+      <p>キャンディデイトアセスメント。既存プレイヤーで同様のサービスを提供している企業はない。</p>
+    </div>
+    <div class="solution-card">
+      <h3>自走化を支援する</h3>
+      <p>制作代行ではなく、ツール &times; 伴走で人事チームが自ら回せる状態を目指す。</p>
+    </div>
+    <div class="solution-card">
+      <h3>資産を継承する</h3>
+      <p>ブランドメモリーにより、採用ナラティブの断絶を防ぎ、コスト逓減を実現。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 26: TEAM & TRACK RECORD ==================== -->
+<section>
+  <h2>支援チーム・実績</h2>
+  <div class="grid-2">
+    <div>
+      <h3>StoryHub株式会社</h3>
+      <table>
+        <tr><td style="font-weight: 700; width: 35%;">導入企業</td><td>150社以上（朝日新聞社ほか大手メディア）</td></tr>
+        <tr><td style="font-weight: 700;">資金調達</td><td>シリーズA 2.2億円（累計2.5億円）</td></tr>
+        <tr><td style="font-weight: 700;">知的財産</td><td>特許取得済み</td></tr>
+        <tr><td style="font-weight: 700;">IR支援実績</td><td>note社、アクセルスペース社</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>AIケイパビリティの移転</h3>
+      <ul>
+        <li><strong>第1層:</strong> AIリテラシー（プラットフォーム活用・品質判断力）</li>
+        <li><strong>第2層:</strong> AIワークフロー（取材→AI生成→編集→公開の一貫フロー）</li>
+        <li><strong>第3層:</strong> AIガバナンス（ブランドメモリーによる一貫性管理）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 27: PRICING ==================== -->
+<section>
+  <h2>料金体系・導入ステップ</h2>
+  <div class="grid-2">
+    <div>
+      <h3>エントリー：アセスメント単体</h3>
+      <table>
+        <tr><td style="font-weight: 700;">対象者</td><td>退職者・内定辞退者10〜30名</td></tr>
+        <tr><td style="font-weight: 700;">実施方法</td><td>AIオートインタビュー</td></tr>
+        <tr><td style="font-weight: 700;">アウトプット</td><td>認知ギャップ分析レポート</td></tr>
+        <tr><td style="font-weight: 700;">想定価格</td><td style="color: var(--sh-blue); font-weight: 700;">30万〜50万円</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>フルパッケージ：自走化支援</h3>
+      <table>
+        <tr><td style="font-weight: 700;">Phase 0-2（立ち上げ）</td><td>3ヶ月</td></tr>
+        <tr><td style="font-weight: 700;">立ち上げ費用</td><td style="color: var(--sh-blue); font-weight: 700;">100万〜200万円</td></tr>
+        <tr><td style="font-weight: 700;">Phase 3（ツール利用）</td><td>月額継続</td></tr>
+        <tr><td style="font-weight: 700;">月額費用</td><td style="color: var(--sh-blue); font-weight: 700;">10万〜20万円</td></tr>
+      </table>
+    </div>
+  </div>
+  <table style="margin-top: 1em;">
+    <tr><th>項目</th><th>従来型（外注中心）</th><th style="color: var(--sh-blue);">StoryHub支援</th></tr>
+    <tr><td>社員インタビュー記事</td><td>10万〜30万円 / 本</td><td>AI支援で1/3〜1/5に圧縮</td></tr>
+    <tr><td>年間コンテンツ制作費（12本）</td><td>120万〜360万円</td><td style="color: var(--sh-green); font-weight: 700;">自走化後はツール利用費のみ</td></tr>
+    <tr><td>候補者リサーチ</td><td style="color: var(--sh-red);">実施していない企業が大半</td><td>アセスメントに含む</td></tr>
+    <tr><td>2年目以降のコスト</td><td>毎年同額</td><td style="color: var(--sh-green); font-weight: 700;">ブランドメモリーで逓減</td></tr>
+  </table>
+</section>
+
+<!-- ==================== SLIDE 28: IR INTEGRATION ==================== -->
+<section>
+  <h2>IR &times; 採用広報 統合パッケージ</h2>
+  <p>StoryHubは、採用広報とIR（統合報告書）を同一のナラティブ基盤で支援できる唯一のプレイヤーです。</p>
+  <table>
+    <tr><th>素材</th><th>IR（統合報告書）での活用</th><th>採用広報での活用</th></tr>
+    <tr><td>経営者インタビュー</td><td>経営戦略の解説</td><td>経営者の採用への思い</td></tr>
+    <tr><td>社員インタビュー</td><td>人的資本の事例</td><td>カルチャーストーリー</td></tr>
+    <tr><td>ダイバーシティの取り組み</td><td>サステナビリティ報告</td><td>インクルージョンの発信</td></tr>
+    <tr><td>事業の成長記録</td><td>価値創造ストーリー</td><td>成長環境のアピール</td></tr>
+  </table>
+  <div class="grid-3" style="margin-top: 1em;">
+    <div class="card accent">
+      <h3>制作コストの統合</h3>
+      <p>1回の取材でIR + 採用広報のコンテンツを同時生成。二重投資を解消。</p>
+    </div>
+    <div class="card accent">
+      <h3>ナラティブの一貫性</h3>
+      <p>ブランドメモリーでIRと採用広報のトーン&マナーを統一。</p>
+    </div>
+    <div class="card accent">
+      <h3>信頼性の担保</h3>
+      <p>「社員が語る実態」と「投資家に伝える姿」が一致する。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 29: NEXT STEPS ==================== -->
+<section>
+  <h2>次のステップ</h2>
+  <p>まずは「キャンディデイトアセスメントの体験」から始めることを推奨します。</p>
+  <div style="margin-top: 1.5em;">
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">1</div>
+      <div>
+        <h3 style="margin: 0;">初回ヒアリング（60分）</h3>
+        <p style="margin: 4px 0 0;">現状の採用体制・採用広報の課題をヒアリング。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">2</div>
+      <div>
+        <h3 style="margin: 0;">アセスメント提案（1週間以内）</h3>
+        <p style="margin: 4px 0 0;">対象者・質問設計・スケジュールの提案。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">3</div>
+      <div>
+        <h3 style="margin: 0;">キャンディデイトアセスメント実施（2〜4週間）</h3>
+        <p style="margin: 4px 0 0;">AIオートインタビューによる候補者リサーチ。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 20px;">
+      <div class="circle-marker">4</div>
+      <div>
+        <h3 style="margin: 0;">分析結果報告 + 全体提案</h3>
+        <p style="margin: 4px 0 0;">アセスメント結果に基づく採用広報支援の全体提案・見積もり提出。</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 16px;">
+      <div class="circle-marker">5</div>
+      <div>
+        <h3 style="margin: 0;">契約・プロジェクト開始</h3>
+        <p style="margin: 4px 0 0;">合意後、月次エンプロイヤーストーリーの配信開始。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SLIDE 30: CTA ==================== -->
+<section class="slide-cta">
+  <h1>採用広報を、<br>企業の語りの起点にする。</h1>
+  <p>まずは無料キャンディデイトアセスメント相談から始めませんか？</p>
+  <div class="email">mahiro@storyhub.jp</div>
+  <p style="margin-top: 2em; font-size: 0.7em; opacity: 0.6;">StoryHub株式会社 | Confidential</p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  width: 1280,
+  height: 720,
+  margin: 0,
+  minScale: 0.2,
+  maxScale: 2.0,
+  hash: true,
+  history: true,
+  transition: 'fade',
+  transitionSpeed: 'fast',
+  controls: true,
+  controlsTutorial: false,
+  progress: true,
+  slideNumber: 'c/t',
+  center: false,
+});
+</script>
+</body>
+</html>
