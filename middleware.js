@@ -1,3 +1,5 @@
+import { next } from '@vercel/edge';
+
 export default function middleware(request) {
   const auth = request.headers.get('authorization');
   if (auth) {
@@ -5,7 +7,7 @@ export default function middleware(request) {
     if (scheme === 'Basic') {
       const decoded = atob(encoded);
       if (decoded === 'storyhub:ensemble') {
-        return;
+        return next();
       }
     }
   }
@@ -14,5 +16,3 @@ export default function middleware(request) {
     headers: { 'WWW-Authenticate': 'Basic realm="Restricted"' },
   });
 }
-
-export const config = { matcher: '/((?!_next/static|favicon.ico).*)' };
